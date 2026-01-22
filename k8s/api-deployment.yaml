@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-deploy
+  name: service-c-deploy
   labels:
-    app: service-app
+    app: service-c
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: service-app
+      app: service-c
   template:
     metadata:
       labels:
-        app: service-app
+        app: service-c
     spec:
       containers:
-      - name: service-app
-        image: elazarmeijers/api-app-a:v1
+      - name: nginx
+        image: elazarmeijers/api-app-a:v12
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

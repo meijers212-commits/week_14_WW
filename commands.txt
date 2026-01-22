@@ -1,0 +1,14 @@
+cd app
+docker build -t elazarmeijers/api-app-a:v12 .
+docker push elazarmeijers/api-app-a:v12
+(oc log-in nided)
+oc status
+cd ..
+oc apply -f k8s
+oc get pods
+oc get all
+oc get pods -w
+oc logs <pod name>
+oc get svc
+oc expose svc svc-service-c
+oc get routes

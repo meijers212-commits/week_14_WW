@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: svc-service-c
   labels:
-    app: service-app
+    app: service-c
 spec:
   type: ClusterIP
   ports:
   - port: 8081
-    name: web-a
+    name: web-c
   selector:
-    app: service-app
+    app: service-c

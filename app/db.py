@@ -43,7 +43,8 @@ class Dbinstractot:
                         manufacturer VARCHAR(100), 
                         origin_country VARCHAR(100), 
                         storage_location VARCHAR(100),
-                        year_estimated INT
+                        year_estimated INT,
+                        risk_level VARCHAR(100)
                     )
                     """
                 )
@@ -75,6 +76,7 @@ class Dbinstractot:
                         record["origin_country"],
                         record["storage_location"],
                         record["year_estimated"],
+                        record["risk_level"],
                     ),
                 )
             conn.commit()  
