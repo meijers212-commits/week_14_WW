@@ -20,4 +20,4 @@ def upload_csv_file(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", port=5000, host="localhost", reload=True)
+    uvicorn.run("main:app", port=8081, host="localhost", reload=True)
