@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-deploy
+  labels:
+    app: service-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: service-app
+  template:
+    metadata:
+      labels:
+        app: service-app
+    spec:
+      containers:
+      - name: service-app
+        image: elazarmeijers/api-app-a:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        env:
+        - name: DB_HOST
+          value: "headless-svc-mysql"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "password"
+        - name: DB_NAME
+          value: "weather_db"

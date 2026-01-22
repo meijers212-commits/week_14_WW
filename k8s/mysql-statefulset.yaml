@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefulset
+spec:
+  selector:
+    matchLabels:
+      app: mysql # has to match .spec.template.metadata.labels
+  serviceName: headless-svc-mysql
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: mysql # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mysql-container
+        image: mysql:9.5.0
+        ports:
+        - containerPort: 3306
+          name: web-container
+        env:
+          #  - name: MYSQL_HOST
+          #    value: "mysql-0.mysql"
+          #  - name: MYSQL_USER
+          #    value: "root"
+           - name: MYSQL_ROOT_PASSWORD
+             value: "password"
+           - name: MYSQL_DATABASE
+             value: "weather_db"
+        volumeMounts:
+        - name: www
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "gp3"
+      resources:
+        requests:
+          storage: 1Gi
