@@ -60,8 +60,8 @@ class Dbinstractot:
             cursor = conn.cursor(dictionary=True)
             query = """INSERT INTO records_weather(weapon_id, weapon_name, weapon_type,
                     range_km, weight_kg, manufacturer, origin_country,
-                    storage_location, year_estimated)
-                    VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                    storage_location, year_estimated, risk_level)
+                    VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
 
             for record in data:
                 cursor.execute(

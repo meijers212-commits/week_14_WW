@@ -13,11 +13,12 @@ app = FastAPI()
 def upload_csv_file(file: UploadFile = File(...,description="enter a valid csv file")):
     try:
         df = pd.read_csv(file.file)
+        print(df)
         data = DataProcessing.data_processing_ful_tesk(df)
         conn = Dbinstractot.get_connection()
         Dbinstractot.creat_table(conn)
-        Dbinstractot.insert_to_db(data)
-        count = len(data)
+        Dbinstractot.insert_to_db(data["data"])
+        count = len(data["data"])
         return {"status": "success", "inserted_records": count}
        
 

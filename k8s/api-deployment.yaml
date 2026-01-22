@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: elazarmeijers/api-app-a:v12
+        image: elazarmeijers/api-app-a:v1.2
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

@@ -1,6 +1,6 @@
 cd app
-docker build -t elazarmeijers/api-app-a:v12 .
-docker push elazarmeijers/api-app-a:v12
+docker build -t elazarmeijers/api-app-a:v1.2 .
+docker push elazarmeijers/api-app-a:v1.2
 (oc log-in nided)
 oc status
 cd ..
