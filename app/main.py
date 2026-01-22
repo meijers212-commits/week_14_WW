@@ -10,13 +10,9 @@ app = FastAPI()
 
 
 @app.post("/upload")
-def upload_csv_file(file: UploadFile = File(...)):
+def upload_csv_file(file: UploadFile = File(...,description="enter a valid csv file")):
     try:
-        contents = file.file.read()
-        buffer = BytesIO(contents)
-        df = pd.read_csv(buffer)
-        buffer.close()
-        file.file.close()
+        df = pd.read_csv(file.file)
         data = DataProcessing.data_processing_ful_tesk(df)
         conn = Dbinstractot.get_connection()
         Dbinstractot.creat_table(conn)
